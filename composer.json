@@ -1,0 +1,19 @@
+{
+    "name": "starescomp/omeka-s-module-cas",
+    "description": "Authentication with CAS for Omeka S",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "University of St Andrews",
+            "email": "research-computing@st-andrews.ac.uk"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.1"
+        }
+    },
+    "minimum-stability": "stable"
+}
+
