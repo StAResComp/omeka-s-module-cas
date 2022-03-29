@@ -23,11 +23,11 @@ class CasAdapter extends AbstractAdapter {
 
     public function authenticate() {
 
-    $casRequestQuery = http_build_query($this->casValidationParams);
-    $casRequestUrl = $this->options['cas_server'].$this->options['cas_validate_path'].'?'.$casRequestQuery;
-    $response = file_get_contents($casRequestUrl);
+        $casRequestQuery = http_build_query($this->casValidationParams);
+        $casRequestUrl = $this->options['cas_server'].$this->options['cas_validate_path'].'?'.$casRequestQuery;
+        $response = file_get_contents($casRequestUrl);
 
-    $responseData = simplexml_load_string($response);
+        $responseData = simplexml_load_string($response);
         foreach($responseData->getDocNamespaces() as $strPrefix => $strNamespace) {
             $responseData->registerXPathNamespace($strPrefix,$strNamespace);
         }
