@@ -59,3 +59,5 @@ S](https://github.com/biblibre/omeka-s-module-Ldap) and on the source code for
 
 This module is published under the GNU General Public License (version 3 or
 later).
+
+Copyright 2022 University of St Andrews.
