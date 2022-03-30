@@ -9,22 +9,14 @@ use Laminas\Mvc\Controller\AbstractActionController;
 class LoginController extends AbstractActionController {
 
     protected $auth;
-    protected $casServer;
-    protected $casLoginPath;
-    protected $casLoginParams;
 
     public function __construct(AuthenticationService $auth) {
         $this->auth = $auth;
-        $options = $this->auth->getAdapter()->getOptions();
-        $this->casServer = $options['cas_server'];
-        $this->casLoginPath = $options['cas_login_path'];
-        $this->casLoginParams = ['service' => $options['cas_service']];
     }
 
     public function casAction() {
-        $casRequestQuery = http_build_query($this->casLoginParams);
-        $casRequestUrl = $this->casServer.$this->casLoginPath.'?'.$casRequestQuery;
-        return $this->redirect()->toUrl($casRequestUrl);
+        $loginUrl = $this->auth->getAdapter()->getCasLoginUrl();
+        return $this->redirect()->toUrl($loginUrl);
     }
 
     public function casAuthAction() {

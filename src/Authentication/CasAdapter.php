@@ -60,11 +60,14 @@ class CasAdapter extends AbstractAdapter {
         $this->casValidationParams['service'] = $this->options['cas_service'];
     }
 
-    public function getOptions() {
-        return $this->options;
-    }
-
     public function setTicket(string $ticket) {
         $this->casValidationParams['ticket'] = $ticket;
+    }
+
+    public function getCasLoginUrl() {
+        $casLoginParams = ['service' => $this->options['cas_service']];
+        $casLoginQuery = http_build_query($casLoginParams);
+        $casLoginUrl = $this->options['cas_server'].$this->options['cas_login_path'].'?'.$casLoginQuery;
+        return $casLoginUrl;
     }
 }
